@@ -55,15 +55,56 @@ var timeReset = document.querySelector("#timeReset");
 var quiz1Card = document.querySelector("#quiz-1");
 var timerElDiv = document.querySelector(".timerDiv");
 var timerRemain = document.querySelector("#timeRemain");
+var questionElement = document.getElementById("question");
+var optionsElement = document.getElementById("options");
+var resultEl = document.getElementById("result");
+
+var currentQuestion = 0;
+var score = 0;
+var timer = 0;
 
 // Function to show and hide
 function showQuizCard() {
       mainSection.style.display = "none";
       timeReset.style.display = "none";
-      //quiz1Card.style.display = "block";
-      //timerElDiv.style.display = "block";
+      quiz1Card.style.display = "block";
+      timerElDiv.style.display = "block";
+      showQuizQuestion();    
 }
 
+
+// This function iterate the question array and create the element existing dummy structure of HTML.
+// Got the array iteration through forEach with the reference in the link https://stackoverflow.com/questions/9329446/loop-for-each-over-an-array-in-javascript
+function showQuizQuestion() {
+      var current = questions[currentQuestion];
+      questionElement.textContent = current.question;
+      optionsElement.innerHTML = "";
+      current.options.forEach((option, index) => {
+            var btn = document.createElement("button");
+            btn.className = "optionbtn";
+            btn.value = option;
+            btn.innerHTML = option;
+            btn.id = option;
+            btn.onclick = function () { 
+                  checkSelectedAnswer(this.id);
+            }
+            var label = document.createElement("label");
+            label.className = "lbloption";
+            label.appendChild(btn);
+            optionsElement.appendChild(label);
+      });    
+}
+ 
+// For each button click on the answer, it will verify the answer with the answer already defined in the array
+function checkSelectedAnswer(selectedAnswer) {
+      if (selectedAnswer === questions[currentQuestion].answer) {
+            resultEl.textContent = "Correct!";
+            score++;
+      } else {
+            resultEl.textContent = "Wrong!";
+      }
+       currentQuestion++;
+}
 
 
 

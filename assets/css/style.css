@@ -143,6 +143,27 @@ header {
       display: none;
 }
 
+#question {
+      font-size: 22px;
+      margin-bottom: 15px;
+}
+
+.optionbtn {
+      border: none;
+      background-color: #52b788;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px 0px;
+      color: #1b4332;
+      display: inline-block;
+      font-size: 20px;
+      line-height: 22px;
+      margin: 12px 12px 12px 18px;
+      padding: 10px 20px;
+      text-align: center;
+      cursor: pointer;
+      width: 300px;
+}
+
 /* The below two blocks for screen resizing is used from password generator example */
 @media (max-width: 690px) {
       .btn {
