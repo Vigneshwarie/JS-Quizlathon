@@ -1,3 +1,5 @@
+/* The HTML flex, card idea is based on password generator example and customized accordingly */
+
 *,
 *::before,
 *::after {
@@ -166,6 +168,12 @@ header {
 
 #showScoreDiv {
       display: none;
+}
+
+.optionbtn:hover {
+      background-color: #1b4332;
+      transition: 0.7s;
+      color: #fff;
 }
 
 /* The below two blocks for screen resizing is used from password generator example */
