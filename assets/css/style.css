@@ -124,6 +124,25 @@ header {
       margin-bottom: 5px;
 }
 
+.timerDiv {
+      display: none;
+      float: right;
+      text-align: right;
+      padding-right: 15px;
+}
+
+.timeRemain {
+      float: right;
+}
+
+#quiz-1 {
+      display: none;
+}
+
+#timeReset {
+      display: none;
+}
+
 /* The below two blocks for screen resizing is used from password generator example */
 @media (max-width: 690px) {
       .btn {
