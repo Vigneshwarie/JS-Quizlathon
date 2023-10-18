@@ -111,6 +111,18 @@ header {
       cursor: pointer;
 }
 
+.card-quiz {
+      font-size: 20px;
+      display: flex;
+      flex-direction: column;
+      padding-top: 5px;
+      padding-right: 30px;
+      padding-left: 10px;
+}
+
+.lbloption {
+      margin-bottom: 5px;
+}
 
 /* The below two blocks for screen resizing is used from password generator example */
 @media (max-width: 690px) {
