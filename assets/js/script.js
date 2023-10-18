@@ -60,9 +60,22 @@ var optionsElement = document.getElementById("options");
 var resultEl = document.getElementById("result");
 var showScoreBtn = document.querySelector("#showScore");
 
+var scoreEl = document.getElementById("currScore");
+var restartQuiz = document.querySelector("#restartQuiz");
+var resetMessage = document.getElementById("resetMessage");
+var showScoreDiv = document.querySelector("#showScoreDiv");
+var candidateName;
+var candidate = document.getElementById("candidate");
+
+var acceptName = document.getElementById("acceptName");
+var finalCertificate = document.getElementById("finalCertificate");
+
 var currentQuestion = 0;
 var score = 0;
 var timer = 0;
+var errorScore = 0;
+var time;
+var reduceTime = 5;
 
 // Function to show and hide
 function showQuizCard() {
@@ -70,9 +83,15 @@ function showQuizCard() {
       timeReset.style.display = "none";
       quiz1Card.style.display = "block";
       timerElDiv.style.display = "block";
+      resultEl.textContent = " ";
+      showScoreDiv.style.display = "none";
+      currentQuestion = 0;
+      score = 0;
+      timer = 0;
       showQuizQuestion();    
+      clearInterval(timer);
+      startTimer(30);
 }
-
 
 // This function iterate the question array and create the element existing dummy structure of HTML.
 // Got the array iteration through forEach with the reference in the link https://stackoverflow.com/questions/9329446/loop-for-each-over-an-array-in-javascript
@@ -96,6 +115,7 @@ function showQuizQuestion() {
       });    
 }
  
+
 // For each button click on the answer, it will verify the answer with the answer already defined in the array
 function checkSelectedAnswer(selectedAnswer) {
       if (selectedAnswer === questions[currentQuestion].answer) {
@@ -103,18 +123,66 @@ function checkSelectedAnswer(selectedAnswer) {
             score++;
       } else {
             resultEl.textContent = "Wrong!";
+            reduceTimer(reduceTime);
       }
       currentQuestion++;
-       if (currentQuestion < questions.length) {
+      if (currentQuestion < questions.length) {
             showQuizQuestion();
       } else {
+            clearInterval(timer);
             resultEl.textContent = "You have answered all the questions!";
             showScoreDiv.style.display = "block";
       }
 }
 
+// Created two timer function to start and reduce. I tried with one function.. It was creating issues; didnt work as expected.
+
+function startTimer(seconds) {
+      time = seconds;
+      timerRemain.textContent = time;
+      timer = setInterval(() => {
+            time--;
+            timerRemain.textContent = time;
+            if (time === 0) {
+                  clearInterval(timer);
+                  quiz1Card.style.display = "none";
+                  timeReset.style.display = "block";
+                  document.getElementById("candidateName").style.display = "none";
+                  acceptName.style.display = "none";
+                  candidate.style.display = "none";
+                  scoreEl.textContent = score;
+            }
+      }, 1000);
+}
+
+function reduceTimer(a) { 
+      time = time - a;
+      timerRemain.textContent = time;
+}
+
+// To display score on completion
+
+function showScore() {
+       clearInterval(timer);
+      quiz1Card.style.display = "none";
+      timeReset.style.display = "block";
+      resetMessage.textContent = " ";
+      finalCertificate.style.display = "none";
+      acceptName.onclick = function () {
+            candidateName = document.getElementById("candidateName").value;
+            candidate.textContent = candidateName + ", ";
+
+            finalCertificate.style.display = "block";
+            if (score >= 6) {
+                  resetMessage.textContent = "Congratulations!!"; 
+            }
+      } 
+      scoreEl.textContent = score;
+}
 
 
 
 
 startBtn.addEventListener("click", showQuizCard);
+restartQuiz.addEventListener("click", showQuizCard);
+showScoreBtn.addEventListener("click", showScore);
