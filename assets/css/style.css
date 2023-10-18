@@ -164,6 +164,10 @@ header {
       width: 300px;
 }
 
+#showScoreDiv {
+      display: none;
+}
+
 /* The below two blocks for screen resizing is used from password generator example */
 @media (max-width: 690px) {
       .btn {

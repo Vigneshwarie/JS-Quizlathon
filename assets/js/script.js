@@ -58,6 +58,7 @@ var timerRemain = document.querySelector("#timeRemain");
 var questionElement = document.getElementById("question");
 var optionsElement = document.getElementById("options");
 var resultEl = document.getElementById("result");
+var showScoreBtn = document.querySelector("#showScore");
 
 var currentQuestion = 0;
 var score = 0;
@@ -103,7 +104,13 @@ function checkSelectedAnswer(selectedAnswer) {
       } else {
             resultEl.textContent = "Wrong!";
       }
-       currentQuestion++;
+      currentQuestion++;
+       if (currentQuestion < questions.length) {
+            showQuizQuestion();
+      } else {
+            resultEl.textContent = "You have answered all the questions!";
+            showScoreDiv.style.display = "block";
+      }
 }
 
 
