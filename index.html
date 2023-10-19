@@ -14,7 +14,7 @@
     <div class="wrapper">
         <header class="headerBanner">
             <div class="timerDiv">
-                <p><span id="timeRemain">30</span></p>
+                <p><span id="timeRemain">60</span></p>
             </div>
         </header>
         <main>
@@ -55,11 +55,13 @@
 
             <section class="card" id="timeReset">
                 <div class="card-body">
-                    <label class="lblForName" id = "lblName">
-                        Please enter your name 
-                    </label>
-                    <input type="text" name="candidateName" id="candidateName" value="" class="candidateTextBox">
-                    <button id="acceptName" class="btn">Submit </button>
+                    <div id="inputDiv">
+                        <label class="lblForName" id = "lblName">
+                            Please enter your name 
+                        </label>
+                        <input type="text" name="candidateName" id="candidateName" value="" class="candidateTextBox">
+                        <button id="acceptName" class="btn">Submit </button>
+                    </div>
                     <h4 id="resetMessage">Sorry! Timed Out. </h4>
                     <p id="finalCertificate"> Hi
                         <span id="candidate"> Candidate</span>
@@ -68,11 +70,11 @@
                     </p>
                     <div class="card-footer">
                         <button id="restartQuiz" class="btn">Click to Restart </button>
+                        <button id="goBack" class="btn">Back</button>
                     </div>
                 </div>
             </section>
-           
-
+            
         </main>
     </div>
     <script src="./assets/js/script.js"></script>

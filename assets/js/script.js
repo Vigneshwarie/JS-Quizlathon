@@ -70,6 +70,8 @@ var candidate = document.getElementById("candidate");
 var acceptName = document.getElementById("acceptName");
 var finalCertificate = document.getElementById("finalCertificate");
 var lblName = document.getElementById("lblName");
+var inputDiv = document.getElementById("inputDiv");
+var goBack = document.querySelector("#goBack");
 
 
 var currentQuestion = 0;
@@ -92,7 +94,8 @@ function showQuizCard() {
       timer = 0;
       showQuizQuestion();    
       clearInterval(timer);
-      startTimer(30);
+      // Hardcoding the timer initial seconds
+      startTimer(60);
 }
 
 // This function iterate the question array and create the element existing dummy structure of HTML.
@@ -129,7 +132,7 @@ function checkSelectedAnswer(selectedAnswer) {
       }
       currentQuestion++;
       if (currentQuestion < questions.length) {
-            showQuizQuestion();
+            showQuizQuestion(); // Once the counter is increased, and the current question is lesser than the total length, then show the next question 
       } else {
             clearInterval(timer);
             resultEl.textContent = "You have answered all the questions!";
@@ -138,6 +141,7 @@ function checkSelectedAnswer(selectedAnswer) {
 }
 
 // Created two timer function to start and reduce. I tried with one function.. It was creating issues; didnt work as expected.
+// Referred the timer examples from the course work --setInterval 
 
 function startTimer(seconds) {
       time = seconds;
@@ -166,19 +170,23 @@ function reduceTimer(a) {
 }
 
 // To display score on completion
+// Sorry for too much of show and hide....can be optimized
 
 function showScore() {
-       clearInterval(timer);
+      clearInterval(timer);
       quiz1Card.style.display = "none";
       timeReset.style.display = "block";
       resetMessage.textContent = " ";
       restartQuiz.style.display = "none";
       finalCertificate.style.display = "none";
+      inputDiv.style.display = "block";
+      goBack.style.display = "none";
       acceptName.onclick = function () {
             candidateName = document.getElementById("candidateName").value;
             candidate.textContent = candidateName + ", ";
-
             finalCertificate.style.display = "block";
+            inputDiv.style.display = "none";
+            goBack.style.display = "block";
             if (score >= 6) {
                   resetMessage.textContent = "Congratulations!!"; 
             }
@@ -186,9 +194,14 @@ function showScore() {
       scoreEl.textContent = score;
 }
 
+function showBackButton() {
+      timeReset.style.display = "none";
+      mainSection.style.display = "block";
+}
 
 
 
 startBtn.addEventListener("click", showQuizCard);
 restartQuiz.addEventListener("click", showQuizCard);
 showScoreBtn.addEventListener("click", showScore);
+goBack.addEventListener("click", showBackButton);
