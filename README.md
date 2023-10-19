@@ -10,7 +10,11 @@ N/A
 
 ## Usage
 
-To use this webpage, click the HTML page, which will open in the browser. The view the code, open the webpage in an HTML editor. When opened in a browser, the HTML page is viewed as below.
+To access the webpage, use the below link to access https://vigneshwarie.github.io/JS-Quizlathon/
+
+The application source code can be accessed here https://github.com/Vigneshwarie/JS-Quizlathon
+
+The code can be downloaded. To use this webpage, click the HTML page, which will open in the browser. The view the code, open the webpage in an HTML editor. When opened in a browser, the HTML page is viewed as below.
 
 ![Alt text](assets/images/main.png)
 
@@ -19,8 +23,6 @@ To use this webpage, click the HTML page, which will open in the browser. The vi
 ![Alt text](assets/images/Image2.png)
 
 ![Alt text](assets/images/Image3.png)
-
-The application source code can be accessed here https://github.com/Vigneshwarie/JS-Quizlathon
 
 ## Credits
 
