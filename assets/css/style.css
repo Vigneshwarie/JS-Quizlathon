@@ -113,6 +113,11 @@ header {
       cursor: pointer;
 }
 
+.candidateTextBox{
+      line-height: 18px;
+      padding: 14px 34px;
+}
+
 .card-quiz {
       font-size: 20px;
       display: flex;
@@ -148,6 +153,12 @@ header {
 #question {
       font-size: 22px;
       margin-bottom: 15px;
+}
+
+#lblForName {
+      font-size: 22px;
+      margin-bottom: 15px;
+      font-weight: bold;
 }
 
 .optionbtn {

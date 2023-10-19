@@ -69,6 +69,8 @@ var candidate = document.getElementById("candidate");
 
 var acceptName = document.getElementById("acceptName");
 var finalCertificate = document.getElementById("finalCertificate");
+var lblName = document.getElementById("lblName");
+
 
 var currentQuestion = 0;
 var score = 0;
@@ -150,14 +152,17 @@ function startTimer(seconds) {
                   document.getElementById("candidateName").style.display = "none";
                   acceptName.style.display = "none";
                   candidate.style.display = "none";
+                  lblName.style.display = "none";
                   scoreEl.textContent = score;
             }
       }, 1000);
 }
 
 function reduceTimer(a) { 
-      time = time - a;
-      timerRemain.textContent = time;
+      if (time > 0) {
+            time = time - a;
+            timerRemain.textContent = time;
+      }
 }
 
 // To display score on completion
@@ -167,6 +172,7 @@ function showScore() {
       quiz1Card.style.display = "none";
       timeReset.style.display = "block";
       resetMessage.textContent = " ";
+      restartQuiz.style.display = "none";
       finalCertificate.style.display = "none";
       acceptName.onclick = function () {
             candidateName = document.getElementById("candidateName").value;
